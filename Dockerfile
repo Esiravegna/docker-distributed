@@ -30,7 +30,7 @@ WORKDIR /work
 
 # Install Python 3 from miniconda
 RUN wget -O miniconda.sh \
-  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+  https://repo.continuum.io/miniconda/Miniconda3-latest-armv7l.sh \
   && bash miniconda.sh -b -p /work/miniconda \
   && rm miniconda.sh
 
