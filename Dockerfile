@@ -1,5 +1,6 @@
-FROM debian:jessie
-MAINTAINER Olivier Grisel <olivier.grisel@ensta.org>
+FROM resin/armv7hf-debian
+MAINTAINER Esteban Siravegna <esiravegna@gmail.com>
+RUN [ "cross-build-start" ]
 
 RUN apt-get update -yqq  && apt-get install -yqq \
   wget \
@@ -99,3 +100,4 @@ ENV TINI_VERSION v0.9.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
 RUN chmod +x /usr/bin/tini
 ENTRYPOINT ["/usr/bin/tini", "--"]
+RUN [ "cross-build-end" ]
