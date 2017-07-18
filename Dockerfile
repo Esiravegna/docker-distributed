@@ -41,17 +41,18 @@ ENV PATH="/work/bin:/work/miniconda/bin:$PATH"
 # Install matplotlib and scikit-image without Qt
 RUN conda update -y python conda && \
   conda install -y --no-deps \
-  matplotlib \
+  --channel https://conda.anaconda.org/ziddey \
   cycler \
   freetype \
   libpng \
+  matplotlib \
   pyparsing \
   pytz \
   python-dateutil \
-  scikit-image \
   networkx \
   pillow \
   six \
+  && conda install   --channel https://conda.anaconda.org/rpi scikit-image \
   && conda clean -tipsy
 
 RUN conda install -y \
