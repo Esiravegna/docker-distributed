@@ -7,6 +7,8 @@ RUN apt-get update -yqq  && apt-get install -yqq \
   bzip2 \
   git \
   libglib2.0-0 \
+  libfreetype6-dev \
+
   && rm -rf /var/lib/apt/lists/*
 
 # Configure environment
@@ -40,35 +42,35 @@ ENV PATH="/work/bin:/work/miniconda/bin:$PATH"
 
 # Install matplotlib and scikit-image without Qt
 RUN conda update -y python conda && \
-  conda install -y --no-deps \
-  --channel https://conda.anaconda.org/ziddey \
-  cycler \
+  conda install -y python=3.6 -c rpi && \
+  conda install -y --no-deps -c rpi \
   freetype \
+  cycler \
   libpng \
-  matplotlib \
   pyparsing \
   pytz \
   python-dateutil \
   networkx \
   pillow \
   six \
-  && conda install   --channel https://conda.anaconda.org/rpi scikit-image \
+  #&& conda install -y --no-deps -c jamalsenouci statsmodels \
   && conda clean -tipsy
 
-RUN conda install -y \
+RUN conda install -y -c rpi \
   pip \
   setuptools \
   notebook \
-  ipywidgets \
   terminado \
   psutil \
   numpy \
   scipy \
   pandas \
   bokeh \
+  matplotlib \
+  scikit-image \
   scikit-learn \
-  statsmodels \
   && conda clean -tipsy
+
 
 
 # Install the master branch of distributed and dask
