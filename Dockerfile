@@ -99,8 +99,5 @@ RUN chown $BASICUSER:users -R /work/.config /work/examples /work/bin /work/requi
 # Install Tini that necessary to properly run the notebook service in a docker
 # container:
 # http://jupyter-notebook.readthedocs.org/en/latest/public_server.html#docker-cmd
-ENV TINI_VERSION v0.9.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
-ENTRYPOINT ["/usr/bin/tini", "--"]
 RUN [ "cross-build-end" ]
+CMD [ "/bin/bash" ]
